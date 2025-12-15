@@ -7610,14 +7610,6 @@
               "$ref": "#/definitions/AgentList"
             }
           },
-          "400": {
-            "description": "Bad request",
-            "x-ms-error-response": true
-          },
-          "403": {
-            "description": "Forbidden",
-            "x-ms-error-response": true
-          },
           "default": {
             "description": "Error response",
             "schema": {
@@ -7681,22 +7673,6 @@
           "200": {
             "description": "Successfully performed action on agent"
           },
-          "400": {
-            "description": "Bad request",
-            "x-ms-error-response": true
-          },
-          "403": {
-            "description": "Forbidden",
-            "x-ms-error-response": true
-          },
-          "502": {
-            "description": "Bad Gateway",
-            "x-ms-error-response": true
-          },
-          "504": {
-            "description": "Gateway Timeout",
-            "x-ms-error-response": true
-          },
           "default": {
             "description": "Error response",
             "schema": {
@@ -7749,22 +7725,6 @@
               "$ref": "#/definitions/UnifiedAgentDto"
             }
           },
-          "400": {
-            "description": "Bad request",
-            "x-ms-error-response": true
-          },
-          "403": {
-            "description": "Forbidden",
-            "x-ms-error-response": true
-          },
-          "502": {
-            "description": "Bad Gateway",
-            "x-ms-error-response": true
-          },
-          "504": {
-            "description": "Gateway Timeout",
-            "x-ms-error-response": true
-          },
           "default": {
             "description": "Error response",
             "schema": {
@@ -7813,22 +7773,6 @@
             "schema": {
               "$ref": "#/definitions/UnifiedToolDto"
             }
-          },
-          "400": {
-            "description": "Bad request",
-            "x-ms-error-response": true
-          },
-          "403": {
-            "description": "Forbidden",
-            "x-ms-error-response": true
-          },
-          "502": {
-            "description": "Bad Gateway",
-            "x-ms-error-response": true
-          },
-          "504": {
-            "description": "Gateway Timeout",
-            "x-ms-error-response": true
           },
           "default": {
             "description": "Error response",
@@ -7879,22 +7823,6 @@
               "$ref": "#/definitions/UnifiedToolDto"
             }
           },
-          "400": {
-            "description": "Bad request",
-            "x-ms-error-response": true
-          },
-          "403": {
-            "description": "Forbidden",
-            "x-ms-error-response": true
-          },
-          "502": {
-            "description": "Bad Gateway",
-            "x-ms-error-response": true
-          },
-          "504": {
-            "description": "Gateway Timeout",
-            "x-ms-error-response": true
-          },
           "default": {
             "description": "Error response",
             "schema": {
@@ -7944,22 +7872,6 @@
               "$ref": "#/definitions/UnifiedToolDto"
             }
           },
-          "400": {
-            "description": "Bad request",
-            "x-ms-error-response": true
-          },
-          "403": {
-            "description": "Forbidden",
-            "x-ms-error-response": true
-          },
-          "502": {
-            "description": "Bad Gateway",
-            "x-ms-error-response": true
-          },
-          "504": {
-            "description": "Gateway Timeout",
-            "x-ms-error-response": true
-          },
           "default": {
             "description": "Error response",
             "schema": {
@@ -8008,22 +7920,6 @@
             "schema": {
               "$ref": "#/definitions/UnifiedToolDto"
             }
-          },
-          "400": {
-            "description": "Bad request",
-            "x-ms-error-response": true
-          },
-          "403": {
-            "description": "Forbidden",
-            "x-ms-error-response": true
-          },
-          "502": {
-            "description": "Bad Gateway",
-            "x-ms-error-response": true
-          },
-          "504": {
-            "description": "Gateway Timeout",
-            "x-ms-error-response": true
           },
           "default": {
             "description": "Error response",

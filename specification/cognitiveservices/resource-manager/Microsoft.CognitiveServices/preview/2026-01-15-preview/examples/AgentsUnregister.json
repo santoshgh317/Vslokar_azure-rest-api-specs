@@ -13,10 +13,6 @@
         "toolUrl": "https://example.com/agent-tool",
         "gatewayUrl": "https://gateway.example.com"
       }
-    },
-    "400": {},
-    "403": {},
-    "502": {},
-    "504": {}
+    }
   }
 }

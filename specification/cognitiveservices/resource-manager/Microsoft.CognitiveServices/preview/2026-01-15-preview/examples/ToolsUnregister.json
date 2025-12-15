@@ -15,10 +15,6 @@
         "toolUrl": "https://mytool.com/endpoint",
         "gatewayUrl": "https://mygateway.com/endpoint"
       }
-    },
-    "400": {},
-    "403": {},
-    "502": {},
-    "504": {}
+    }
   }
 }
