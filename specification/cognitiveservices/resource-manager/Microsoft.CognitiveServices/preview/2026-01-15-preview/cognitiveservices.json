@@ -14320,6 +14320,7 @@
       "properties": {
         "applicationInsightsResourceId": {
           "type": "string",
+          "format": "arm-id",
           "x-nullable": true
         }
       },
