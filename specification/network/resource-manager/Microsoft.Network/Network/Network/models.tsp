@@ -1,10 +1,12 @@
 import "@typespec/rest";
 import "@typespec/http";
+import "@typespec/versioning";
 import "@azure-tools/typespec-azure-core";
 import "@azure-tools/typespec-azure-resource-manager";
 
 using TypeSpec.Rest;
 using TypeSpec.Http;
+using TypeSpec.Versioning;
 using Azure.ResourceManager;
 using Azure.Core;
 using Azure.ResourceManager.Foundations;
@@ -12684,6 +12686,12 @@ model AzureFirewallApplicationRule {
    * List of source IpGroups for this rule.
    */
   sourceIpGroups?: string[];
+
+  /**
+   * List of source countries for this rule.
+   */
+  @added(Versions.v2025_07_01)
+  sourceCountries?: string[];
 }
 
 /**
@@ -12827,6 +12835,12 @@ model AzureFirewallNatRule {
    * List of source IpGroups for this rule.
    */
   sourceIpGroups?: string[];
+
+  /**
+   * List of source countries for this rule.
+   */
+  @added(Versions.v2025_07_01)
+  sourceCountries?: string[];
 }
 
 /**
@@ -12933,6 +12947,18 @@ model AzureFirewallNetworkRule {
    * List of destination IpGroups for this rule.
    */
   destinationIpGroups?: string[];
+
+  /**
+   * List of source countries for this rule.
+   */
+  @added(Versions.v2025_07_01)
+  sourceCountries?: string[];
+
+  /**
+   * List of destination countries for this rule.
+   */
+  @added(Versions.v2025_07_01)
+  destinationCountries?: string[];
 }
 
 /**

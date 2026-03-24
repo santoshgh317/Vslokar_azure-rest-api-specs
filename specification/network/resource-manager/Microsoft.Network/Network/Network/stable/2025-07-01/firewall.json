@@ -655,6 +655,13 @@
           "items": {
             "type": "string"
           }
+        },
+        "sourceCountries": {
+          "type": "array",
+          "description": "List of source countries for this rule.",
+          "items": {
+            "type": "string"
+          }
         }
       }
     },
@@ -966,6 +973,13 @@
           "items": {
             "type": "string"
           }
+        },
+        "sourceCountries": {
+          "type": "array",
+          "description": "List of source countries for this rule.",
+          "items": {
+            "type": "string"
+          }
         }
       }
     },
@@ -1080,6 +1094,20 @@
         "destinationIpGroups": {
           "type": "array",
           "description": "List of destination IpGroups for this rule.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "sourceCountries": {
+          "type": "array",
+          "description": "List of source countries for this rule.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "destinationCountries": {
+          "type": "array",
+          "description": "List of destination countries for this rule.",
           "items": {
             "type": "string"
           }
