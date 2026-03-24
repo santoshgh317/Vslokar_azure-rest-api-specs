@@ -8,6 +8,7 @@ using TypeSpec.Http;
 using Azure.ResourceManager;
 using Azure.Core;
 using Azure.ResourceManager.Foundations;
+using TypeSpec.Versioning;
 
 namespace Microsoft.Network;
 
@@ -23183,6 +23184,12 @@ model VirtualNetworkPropertiesFormat {
    */
   @visibility(Lifecycle.Read)
   defaultPublicNatGateway?: SubResource;
+
+  /**
+   * A summarized list of advertised prefixes for the virtual network.
+   */
+  @added(Versions.v2025_07_01)
+  summarizedGatewayPrefixes?: AddressSpace;
 }
 
 /**
@@ -29895,13 +29902,19 @@ model VirtualNetworkAppliancePropertiesFormat {
   /**
    * Bandwidth of the VirtualNetworkAppliance resource in Gbps.
    */
-  bandwidthInGbps?: string;
+  bandwidthInGbps?: float64;
 
   /**
    * A list of IPConfigurations of the virtual network appliance.
    */
   @visibility(Lifecycle.Read)
   ipConfigurations?: VirtualNetworkApplianceIpConfiguration[];
+
+  /**
+   * Whether the specific virtual network appliance is IPv4 or Dual Stack. Default is IPv4.
+   */
+  @added(Versions.v2025_07_01)
+  privateIPAddressVersion?: VirtualNetworkApplianceIpVersionType;
 
   /**
    * The provisioning state of the virtual network appliance resource.
@@ -29919,6 +29932,20 @@ model VirtualNetworkAppliancePropertiesFormat {
    * The reference to the subnet resource.
    */
   subnet?: Subnet;
+}
+
+/**
+ * IP address version.
+ */
+@added(Versions.v2025_07_01)
+union VirtualNetworkApplianceIpVersionType {
+  string,
+
+  /** IPv4 */
+  IPv4: "IPv4",
+
+  /** Dual Stack */
+  DualStack: "DualStack",
 }
 
 /**
