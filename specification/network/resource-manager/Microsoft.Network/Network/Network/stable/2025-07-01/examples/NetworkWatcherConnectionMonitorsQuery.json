@@ -1,0 +1,65 @@
+{
+  "parameters": {
+    "api-version": "2025-07-01",
+    "subscriptionId": "subid",
+    "resourceGroupName": "rg1",
+    "networkWatcherName": "nw1",
+    "parameters": {
+      "resourceIds": [
+        "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Compute/virtualMachines/vm1",
+        "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/vnet1"
+      ],
+      "pollTimeInHours": 24,
+      "includeInferred": true
+    }
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "value": [
+          {
+            "resourceId": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Compute/virtualMachines/vm1",
+            "connectionMonitorResourceId": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/networkWatchers/nw1/connectionMonitors/cm1",
+            "workspaceResourceId": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.OperationalInsights/workspaces/ws1",
+            "inferredResourceId": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Compute/virtualMachines/vm2",
+            "observedResourceId": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Compute/virtualMachines/vm1",
+            "isMonitored": true,
+            "participation": "Source",
+            "sourceName": "vm1",
+            "destinationName": "vm2",
+            "testGroupName": "tg1",
+            "testConfigurationName": "tc1",
+            "testStatus": "Pass",
+            "lastUpdatedUtc": "2025-05-01T12:00:00Z"
+          }
+        ]
+      }
+    },
+    "202": {
+      "headers": {
+        "Location": "https://management.azure.com/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/networkWatchers/nw1/queryConnectionMonitors?api-version=2025-07-01"
+      },
+      "body": {
+        "value": [
+          {
+            "resourceId": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Compute/virtualMachines/vm1",
+            "connectionMonitorResourceId": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/networkWatchers/nw1/connectionMonitors/cm1",
+            "workspaceResourceId": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.OperationalInsights/workspaces/ws1",
+            "inferredResourceId": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Compute/virtualMachines/vm2",
+            "observedResourceId": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Compute/virtualMachines/vm1",
+            "isMonitored": true,
+            "participation": "Source",
+            "sourceName": "vm1",
+            "destinationName": "vm2",
+            "testGroupName": "tg1",
+            "testConfigurationName": "tc1",
+            "testStatus": "Pass",
+            "lastUpdatedUtc": "2025-05-01T12:00:00Z"
+          }
+        ]
+      }
+    }
+  },
+  "operationId": "NetworkWatchers_QueryConnectionMonitors",
+  "title": "Query Connection Monitors"
+}

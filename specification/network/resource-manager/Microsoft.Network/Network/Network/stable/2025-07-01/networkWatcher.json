@@ -1826,6 +1826,83 @@
         "x-ms-long-running-operation": true
       }
     },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/queryConnectionMonitors": {
+      "post": {
+        "operationId": "NetworkWatchers_QueryConnectionMonitors",
+        "tags": [
+          "ConnectionMonitors"
+        ],
+        "description": "Queries connection monitors for the specified resources under a network watcher.",
+        "parameters": [
+          {
+            "$ref": "../../../../../../../common-types/resource-management/v5/types.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "../../../../../../../common-types/resource-management/v5/types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "../../../../../../../common-types/resource-management/v5/types.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "name": "networkWatcherName",
+            "in": "path",
+            "description": "The name of the network watcher.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Parameters that define the query for connection monitors.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ConnectionMonitorsQueryParameters"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Azure operation completed successfully.",
+            "schema": {
+              "$ref": "#/definitions/ConnectionMonitorsQueryResult"
+            }
+          },
+          "202": {
+            "description": "The request has been accepted for processing, but processing has not yet completed.",
+            "schema": {
+              "$ref": "#/definitions/ConnectionMonitorsQueryResult"
+            },
+            "headers": {
+              "Location": {
+                "type": "string",
+                "description": "The Location header contains the URL where the status of the long running operation can be checked."
+              },
+              "Retry-After": {
+                "type": "integer",
+                "format": "int32",
+                "description": "The Retry-After header can indicate how long the client should wait before polling the operation status."
+              }
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Query Connection Monitors": {
+            "$ref": "./examples/NetworkWatcherConnectionMonitorsQuery.json"
+          }
+        },
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "location",
+          "final-state-schema": "#/definitions/ConnectionMonitorsQueryResult"
+        },
+        "x-ms-long-running-operation": true
+      }
+    },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/queryFlowLogStatus": {
       "post": {
         "operationId": "NetworkWatchers_GetFlowLogStatus",
@@ -2895,6 +2972,103 @@
         "workspaceResourceId": {
           "type": "string",
           "description": "Log analytics workspace resource ID."
+        }
+      }
+    },
+    "ConnectionMonitorsQueryParameters": {
+      "type": "object",
+      "description": "Parameters that define the query for connection monitors.",
+      "properties": {
+        "resourceIds": {
+          "type": "array",
+          "description": "The list of VMs or VNets resource IDs to query.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "pollTimeInHours": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The poll time in hours for the query."
+        },
+        "includeInferred": {
+          "type": "boolean",
+          "description": "Whether to include inferred connections."
+        }
+      },
+      "required": [
+        "resourceIds"
+      ]
+    },
+    "ConnectionMonitorsQueryResult": {
+      "type": "object",
+      "description": "List of connection monitor query result items.",
+      "properties": {
+        "value": {
+          "type": "array",
+          "description": "The list of connection monitor query result items.",
+          "items": {
+            "$ref": "#/definitions/ConnectionMonitorsQueryResultItem"
+          }
+        }
+      }
+    },
+    "ConnectionMonitorsQueryResultItem": {
+      "type": "object",
+      "description": "A connection monitor query result item.",
+      "properties": {
+        "resourceId": {
+          "type": "string",
+          "description": "The resource ID."
+        },
+        "connectionMonitorResourceId": {
+          "type": "string",
+          "description": "The connection monitor resource ID."
+        },
+        "workspaceResourceId": {
+          "type": "string",
+          "description": "The workspace resource ID."
+        },
+        "inferredResourceId": {
+          "type": "string",
+          "description": "The inferred resource ID."
+        },
+        "observedResourceId": {
+          "type": "string",
+          "description": "The observed resource ID."
+        },
+        "isMonitored": {
+          "type": "boolean",
+          "description": "Whether the resource is monitored."
+        },
+        "participation": {
+          "type": "string",
+          "description": "The participation type."
+        },
+        "sourceName": {
+          "type": "string",
+          "description": "The source name."
+        },
+        "destinationName": {
+          "type": "string",
+          "description": "The destination name."
+        },
+        "testGroupName": {
+          "type": "string",
+          "description": "The test group name."
+        },
+        "testConfigurationName": {
+          "type": "string",
+          "description": "The test configuration name."
+        },
+        "testStatus": {
+          "type": "string",
+          "description": "The test status."
+        },
+        "lastUpdatedUtc": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The last updated date and time in UTC."
         }
       }
     },

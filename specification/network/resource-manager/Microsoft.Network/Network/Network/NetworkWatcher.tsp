@@ -8,6 +8,7 @@ using TypeSpec.Rest;
 using Azure.ResourceManager;
 using TypeSpec.Http;
 using TypeSpec.OpenAPI;
+using TypeSpec.Versioning;
 
 namespace Microsoft.Network;
 /**
@@ -350,6 +351,26 @@ interface NetworkWatchers {
   >;
 
   /**
+   * Queries connection monitors for the specified resources under a network watcher.
+   */
+  #suppress "@azure-tools/typespec-azure-resource-manager/no-response-body" "FIXME: Update justification, follow aka.ms/tsp/conversion-fix for details"
+  @added(Versions.v2025_07_01)
+  @tag("ConnectionMonitors")
+  @autoRoute
+  @action("queryConnectionMonitors")
+  queryConnectionMonitors is ArmResourceActionAsyncBase<
+    NetworkWatcher,
+    ConnectionMonitorsQueryParameters,
+    ArmResponse<ConnectionMonitorsQueryResult> | (ArmAcceptedLroResponse<LroHeaders = ArmLroLocationHeader<FinalResult = ConnectionMonitorsQueryResult> &
+      Azure.Core.Foundations.RetryAfterHeader> & {
+      @body
+      _: ConnectionMonitorsQueryResult;
+    }),
+    BaseParameters = Azure.ResourceManager.Foundations.DefaultBaseParameters<NetworkWatcher>,
+    Error = ErrorResponse
+  >;
+
+  /**
    * Create and start a packet capture on the specified VM.
    */
   #suppress "@azure-tools/typespec-azure-core/invalid-final-state" "FIXME: Update justification, follow aka.ms/tsp/conversion-fix for details"
@@ -489,6 +510,9 @@ interface NetworkWatchers {
 );
 @@doc(NetworkWatchers.getNetworkConfigurationDiagnostic::parameters.body,
   "Parameters to get network configuration diagnostic."
+);
+@@doc(NetworkWatchers.queryConnectionMonitors::parameters.body,
+  "Parameters that define the query for connection monitors."
 );
 @@doc(NetworkWatchers.create::parameters.body,
   "Parameters that define the create packet capture operation."
